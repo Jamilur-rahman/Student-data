@@ -75,6 +75,18 @@ def dataAt(a):
         print("Invalid index")
 
 
+def findByDpt(a):
+    for i in range(len(id)):
+        if a == dpt[i]:
+            print("Student data: ")
+            print("ID: {}".format(id[i]))
+            print("Department: {}".format(dpt[i]))
+            print("First Name: {}".format(firstName[i]))
+            print("Last Name: {}".format(lastName[i]))
+            print("Contact Number: {}".format(number[i]))
+            print("Blood Group: {}".format(blood[i]))
+            print()
+
 def sorting():
     for i in range(len(id)):
         for j in range(len(id)):
@@ -107,6 +119,20 @@ def sorting():
         for i in range(len(id)):
             strn = str(id[i])+ " " + dpt[i] + " "+ firstName[i]+" "+lastName[i]+" "+number[i]+" "+blood[i]
             f.write(strn+'\n')
+def stdRemove(a):
+    for i in range(len(id)):
+        if a == id[i]:
+            id.remove(id[i])
+            dpt.remove(dpt[i])
+            firstName.remove(firstName[i])
+            lastName.remove(lastName[i])
+            number.remove(number[i])
+            blood.remove(blood[i])
+            break
+    with open('sample.txt', 'w') as f:
+        for i in range(len(id)):
+            strn = str(id[i])+ " " + dpt[i] + " "+ firstName[i]+" "+lastName[i]+" "+number[i]+" "+blood[i]
+            f.write(strn+'\n')
 
 def main():
     data()
@@ -114,7 +140,9 @@ def main():
     if x == "y":
         while x != "n":
             print(
-                "Press 1 to see data\n press 2 to enter data\n press 3 to find data\n press 4 to find data using index\n press 5 to sort data\n ")
+                "Press 1 to see data\n press 2 to enter data\n press 3 to find data\n press 4 to find data using "
+                "index\n "
+                " press 5 to sort data\n press 6 to search for student by department\n press 7 to remove student info\n")
 
             n = int(input("Press the desired key: "))
 
@@ -135,7 +163,12 @@ def main():
                 dataAt(idx)
             elif n == 5:
                 sorting()
-
+            elif n == 6:
+                dpt = int(input("Enter department: "))
+                findByDpt(dpt)
+            elif n == 7:
+                rmv = int(input("Please enter Student ID to remove: "))
+                stdRemove(rmv)
             x = input("Do you wish to continue: ")
 
 
